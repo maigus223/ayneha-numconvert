@@ -1,0 +1,6 @@
+<resources>
+    <style name="Theme.AynehaConvertisseur" parent="android:Theme.Material.NoActionBar">
+        <item name="android:statusBarColor">#090B10</item>
+        <item name="android:windowBackground">#090B10</item>
+    </style>
+</resources>
