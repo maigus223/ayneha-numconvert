@@ -1,12 +1,27 @@
-*.iml
+# Fichiers de compilation
+build/
+*/build/
 .gradle/
-/local.properties
-/.idea/
-.DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Réglages personnels d'Android Studio
+.idea/
+*.iml
 local.properties
-/app/build
-/app/release
+
+# Fichiers du système
+.DS_Store
+Thumbs.db
+
+# Applications compilées (elles se téléchargent sur ayneha.org)
+*.apk
+*.aab
+output-metadata.json
+
+# Clés de signature et mots de passe (ne JAMAIS publier)
+*.jks
+*.keystore
+keystore.properties
+key.properties
