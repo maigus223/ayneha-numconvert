@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 MAIGUS
+
 package com.maigus.ayneha.converter.navigation
 
 import androidx.compose.runtime.Composable

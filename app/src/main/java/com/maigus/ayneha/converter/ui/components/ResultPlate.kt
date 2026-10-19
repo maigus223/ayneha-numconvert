@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 MAIGUS
+
 package com.maigus.ayneha.converter.ui.components
 
 import androidx.compose.animation.animateColorAsState
@@ -34,6 +37,7 @@ private val LABELS = mapOf(
     Script.FR to "Français",
     Script.AR to "Arabe",
     Script.NKO to "N'ko",
+    Script.ADLAM to "Adlam",
     Script.DOGON to "Dogon NÈNÈ"
 )
 
@@ -78,12 +82,12 @@ fun ResultPlate(script: Script, value: String, modifier: Modifier = Modifier) {
                 contentAlignment = Alignment.CenterStart
             ) {
                 if (value.isEmpty()) {
-                    Text("—", color = AppCreamDim, fontSize = 14.sp, fontFamily = BodyFontFamily)
+                    Text("-", color = AppCreamDim, fontSize = 14.sp, fontFamily = BodyFontFamily)
                 } else {
                     Text(
                         formatDigits(value, script),
                         color = textColor,
-                        fontSize = 25.sp,
+                        fontSize = if (script == Script.ADLAM) 27.sp else 25.sp,
                         fontFamily = font,
                         style = TextStyle(
                             lineHeight = 32.sp,

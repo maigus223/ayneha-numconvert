@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- SPDX-License-Identifier: GPL-3.0-or-later
+     Copyright (C) 2026 MAIGUS -->
 <resources>
-    <color name="ic_launcher_background">#090B10</color>
+    <color name="ic_launcher_background">#FFFFFF</color>
 </resources>

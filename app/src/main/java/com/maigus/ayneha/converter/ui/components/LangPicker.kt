@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 MAIGUS
+
 package com.maigus.ayneha.converter.ui.components
 
 import androidx.compose.foundation.Image
@@ -26,6 +29,7 @@ private data class LangOption(val script: Script, val label: String)
 private val OPTIONS = listOf(
     LangOption(Script.AYNEHA, "AYNEHA"),
     LangOption(Script.NKO, "N'ko"),
+    LangOption(Script.ADLAM, "Adlam"),
     LangOption(Script.DOGON, "Dogon NÈNÈ"),
     LangOption(Script.AR, "Arabe"),
     LangOption(Script.FR, "Français")
@@ -40,9 +44,11 @@ fun LangBadge(script: Script, tint: Color = AppGold, fontSize: androidx.compose.
             modifier = Modifier.height(with(androidx.compose.ui.platform.LocalDensity.current) { fontSize.toDp() })
         )
         Script.NKO -> Text("ߒߞߏ", color = tint, fontSize = fontSize, fontFamily = NkoFontFamily)
+        // « Adlam » écrit en adlam
+        Script.ADLAM -> Text("\uD83A\uDD00\uD83A\uDD23\uD83A\uDD24\uD83A\uDD22\uD83A\uDD25", color = tint, fontSize = fontSize, fontFamily = AdlamFontFamily)
         Script.AR -> Text("عربي", color = tint, fontSize = fontSize, fontFamily = ArabicFontFamily)
         Script.FR -> Text("Français", color = tint, fontSize = fontSize, fontFamily = BodyFontFamily)
-		Script.DOGON -> Text("\uE34C\uE244\uE34C\uE244", color = tint, fontSize = fontSize, fontFamily = NeneFontFamily)
+        Script.DOGON -> Text("\uE34C\uE244\uE34C\uE244", color = tint, fontSize = fontSize, fontFamily = NeneFontFamily)
     }
 }
 

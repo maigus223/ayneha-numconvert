@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 MAIGUS
+
 package com.maigus.ayneha.converter.ui.screens
 
 import androidx.compose.foundation.background
@@ -10,6 +13,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
@@ -20,6 +25,14 @@ import com.maigus.ayneha.converter.ui.theme.*
 
 @Composable
 fun PrivacyScreen(onBack: () -> Unit) {
+    val context = LocalContext.current
+    val versionName = remember {
+        try {
+            context.packageManager.getPackageInfo(context.packageName, 0).versionName ?: ""
+        } catch (e: Exception) {
+            ""
+        }
+    }
     Box(modifier = Modifier.fillMaxSize().background(AppBg)) {
         Column(
             modifier = Modifier
@@ -53,10 +66,18 @@ fun PrivacyScreen(onBack: () -> Unit) {
                     .verticalScroll(rememberScrollState())
                     .padding(horizontal = 20.dp, vertical = 8.dp)
             ) {
+                Text(
+                    "Version $versionName - Dernière mise à jour : 17 octobre 2026",
+                    color = AppGoldSoft,
+                    fontSize = 12.sp,
+                    fontFamily = BodyFontFamily,
+                    modifier = Modifier.padding(top = 6.dp, bottom = 10.dp)
+                )
                 PrivacyParagraph(
                     "AYNEHA NumConvert est un outil de conversion de chiffres entre " +
-                        "cinq systèmes numériques : l'écriture AYNEHA (Songhay), le Dogon NÈNÈ, " +
-                        "le français, l'arabe (chiffres indo-arabes orientaux) et le N'ko. Cette " +
+                        "six systèmes numériques : l'écriture AYNEHA (Songhay), le N'ko, l'adlam " +
+                        "(écriture du peul), le Dogon NÈNÈ, l'arabe (chiffres indo-arabes orientaux) " +
+                        "et le français. Cette " +
                         "page explique simplement ce que l'application fait (et surtout, ce " +
                         "qu'elle ne fait pas) avec vos informations."
                 )

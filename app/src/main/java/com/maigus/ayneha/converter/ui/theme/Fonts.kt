@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 MAIGUS
+
 package com.maigus.ayneha.converter.ui.theme
 
 import androidx.compose.ui.text.font.Font
@@ -7,14 +10,16 @@ import androidx.compose.ui.text.googlefonts.GoogleFont
 import androidx.compose.ui.text.googlefonts.Font as GoogleDownloadableFont
 import com.maigus.ayneha.converter.R
 
-/** Police custom AYNEHA, embarquée dans l'application (res/font/ayneha_type.ttf). */
-val AynehaFontFamily = FontFamily(Font(R.font.ayneha_type))
+/** Police custom AYNEHA, embarquée dans l'application (res/font/ayneha_pro.ttf). */
+val AynehaFontFamily = FontFamily(Font(R.font.ayneha_pro))
 /** Police custom Dogon NÈNÈ, embarquée dans l'application (res/font/nene_regular.ttf). */
 val NeneFontFamily = FontFamily(Font(R.font.nene_regular))
+/** Police Noto Sans Adlam (SIL OFL 1.1), embarquée (res/font/noto_sans_adlam.ttf) : chiffres et lettres adlam. */
+val AdlamFontFamily = FontFamily(Font(R.font.noto_sans_adlam))
 
 /**
  * Fournisseur Google Fonts (polices téléchargées via Google Play Services au premier lancement,
- * puis mises en cache par le système — aucune permission Internet requise côté application).
+ * puis mises en cache par le système - aucune permission Internet requise côté application).
  */
 private val googleFontProvider = GoogleFont.Provider(
     providerAuthority = "com.google.android.gms.fonts",
@@ -44,5 +49,6 @@ fun fontFamilyFor(script: com.maigus.ayneha.converter.data.Script): FontFamily =
     com.maigus.ayneha.converter.data.Script.AR -> ArabicFontFamily
     com.maigus.ayneha.converter.data.Script.NKO -> NkoFontFamily
     com.maigus.ayneha.converter.data.Script.FR -> BodyFontFamily
-	com.maigus.ayneha.converter.data.Script.DOGON -> NeneFontFamily
+    com.maigus.ayneha.converter.data.Script.ADLAM -> AdlamFontFamily
+    com.maigus.ayneha.converter.data.Script.DOGON -> NeneFontFamily
 }

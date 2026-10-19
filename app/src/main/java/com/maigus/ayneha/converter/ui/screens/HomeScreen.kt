@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+// Copyright (C) 2026 MAIGUS
+
 package com.maigus.ayneha.converter.ui.screens
 
 import androidx.compose.foundation.Image
@@ -75,7 +78,7 @@ fun HomeScreen(onOpenPrivacy: () -> Unit) {
                         contentDescription = "AYNEHA barmey-ko",
                         modifier = Modifier
                             .width(titleWidth)
-                            .aspectRatio(168f / 25f)
+                            .aspectRatio(1635f / 199f)
                     )
                     Spacer(modifier = Modifier.height(6.dp))
                 }
@@ -175,7 +178,7 @@ fun HomeScreen(onOpenPrivacy: () -> Unit) {
 
             // ---------- Résultats ----------
             Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
-                listOf(Script.AYNEHA, Script.NKO, Script.DOGON, Script.AR, Script.FR).forEach { s ->
+                com.maigus.ayneha.converter.data.SCRIPT_ORDER.forEach { s ->
                     ResultPlate(script = s, value = value)
                 }
             }
