@@ -67,7 +67,7 @@ fun PrivacyScreen(onBack: () -> Unit) {
                     .padding(horizontal = 20.dp, vertical = 8.dp)
             ) {
                 Text(
-                    "Version $versionName - Dernière mise à jour : 17 octobre 2026",
+                    "Version $versionName - Dernière mise à jour : 1er novembre 2026",
                     color = AppGoldSoft,
                     fontSize = 12.sp,
                     fontFamily = BodyFontFamily,
@@ -99,11 +99,22 @@ fun PrivacyScreen(onBack: () -> Unit) {
 
                 SectionTitle("Permissions de l'application")
                 PrivacyParagraph(
-                    "L'application ne demande aucune permission particulière (pas d'accès à vos " +
-                        "contacts, votre position, votre appareil photo ou vos fichiers). Certaines " +
+                    "L'application n'a pas accès à vos contacts, votre position, votre appareil " +
+                        "photo ou vos fichiers. Les permissions Internet et installation " +
+                        "d'applications servent uniquement à la mise à jour depuis ayneha.org " +
+                        "(voir ci-dessous), après votre confirmation. Certaines " +
                         "polices d'écriture (pour l'arabe et le N'ko) peuvent être téléchargées une " +
                         "seule fois par les services Google Play, indépendamment de l'application, " +
                         "puis restent mises en cache sur votre appareil."
+                )
+
+                SectionTitle("Mise à jour depuis ayneha.org")
+                PrivacyParagraph(
+                    "Seulement quand vous tirez l'écran vers le bas, l'application lit sur " +
+                        "ayneha.org un petit fichier qui indique la dernière version. Si une " +
+                        "version plus récente existe, elle peut la télécharger depuis ayneha.org ; " +
+                        "son empreinte est vérifiée et c'est vous qui confirmez l'installation. " +
+                        "Les nombres que vous saisissez et aucune donnée personnelle ne sont envoyés."
                 )
 
                 SectionTitle("Utilisation par des enfants")

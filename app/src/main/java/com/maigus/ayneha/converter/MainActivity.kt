@@ -25,5 +25,27 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+        // Mise à jour depuis ayneha.org : tirer l'écran principal vers le bas (voir MiseAJourUi.kt).
+        maj = MiseAJourUi(
+            this,
+            accent = 0xFFFFC933.toInt(),
+            fond = 0xFF12151C.toInt(),
+            encre = 0xFFFFFFFF.toInt(),
+            police = androidx.core.content.res.ResourcesCompat.getFont(this, R.font.ayneha_pro),
+            geste = false
+        )
+        MiseAJourUi.courant = maj
+    }
+
+    private lateinit var maj: MiseAJourUi
+
+    override fun onResume() {
+        super.onResume()
+        if (::maj.isInitialized) { MiseAJourUi.courant = maj; maj.surReprise() }
+    }
+
+    override fun onDestroy() {
+        if (MiseAJourUi.courant === maj) MiseAJourUi.courant = null
+        super.onDestroy()
     }
 }

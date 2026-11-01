@@ -3,6 +3,10 @@
      Copyright (C) 2026 MAIGUS -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <!-- Mise à jour depuis ayneha.org, seulement quand on tire l'écran vers le bas -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
     <application
         android:allowBackup="true"
 		android:icon="@mipmap/ic_launcher"
@@ -21,6 +25,16 @@
             </intent-filter>
         </activity>
 
+        <!-- Mise à jour depuis ayneha.org : donne l'APK téléchargé à l'installateur d'Android -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

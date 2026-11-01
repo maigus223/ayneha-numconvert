@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Mise à jour depuis ayneha.org : seul le dossier cacheDir/maj (APK téléchargé) est partagé. -->
+<paths>
+    <cache-path name="maj" path="maj/" />
+</paths>

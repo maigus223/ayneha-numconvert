@@ -23,6 +23,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.geometry.Offset
+import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
+import androidx.compose.ui.input.nestedscroll.NestedScrollSource
+import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.unit.Velocity
+import com.maigus.ayneha.converter.MiseAJourUi
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.onGloballyPositioned
 import androidx.compose.ui.res.painterResource
@@ -42,11 +48,41 @@ fun HomeScreen(onOpenPrivacy: () -> Unit) {
     var value by remember { mutableStateOf("") }
     var lang by remember { mutableStateOf(Script.FR) }
 
+    // Mise à jour depuis ayneha.org : quand l'écran est tout en haut, tirer vers le bas
+    // fait descendre le rond orange (voir MiseAJourUi.kt).
+    val tirage = remember {
+        object : NestedScrollConnection {
+            var d = 0f
+            override fun onPreScroll(available: Offset, source: NestedScrollSource): Offset {
+                if (d > 0f && available.y < 0f) {
+                    val c = maxOf(available.y, -d)
+                    d += c
+                    MiseAJourUi.courant?.tirer(d)
+                    return Offset(0f, c)
+                }
+                return Offset.Zero
+            }
+            override fun onPostScroll(consumed: Offset, available: Offset, source: NestedScrollSource): Offset {
+                if (source == NestedScrollSource.Drag && available.y > 0f) {
+                    d += available.y
+                    MiseAJourUi.courant?.tirer(d)
+                    return Offset(0f, available.y)
+                }
+                return Offset.Zero
+            }
+            override suspend fun onPreFling(available: Velocity): Velocity {
+                if (d > 0f) { d = 0f; MiseAJourUi.courant?.lacher() }
+                return Velocity.Zero
+            }
+        }
+    }
+
     Box(modifier = Modifier.fillMaxSize().background(AppBg)) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
                 .windowInsetsPadding(WindowInsets.statusBars)
+                .nestedScroll(tirage)
                 .verticalScroll(rememberScrollState())
                 .padding(horizontal = 10.dp)
                 .padding(top = 14.dp, bottom = 40.dp)
